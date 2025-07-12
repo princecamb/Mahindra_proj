@@ -1,0 +1,53 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:macros="sap.fe.macros" xmlns:suite="sap.suite.ui.commons">
+	<!-- <VBox core:require="{ handler: 'sales/ext/fragment/Commets1'}">
+		<Button text="Commets1" press="handler.onPress" />
+	</VBox> -->
+
+	<VBox id="_IDGenVBox1"  core:require="{ handler: 'sales/ext/fragment/Commets1'}" width="100%">
+       <Toolbar id="_IDGenToolbar1223">
+            <Title id="_IDGenTitle1223" text="Enter Comments *"/>
+            <ToolbarSpacer id="_IDGenToolbarSpacer1223"/>
+            <Button id="_IDGenButton1223" text="Browse History" press="handler.onBrowseHistoryPress"/>
+        </Toolbar>
+        
+       <TextArea 
+            id="_IDGenTextArea1223" 
+            showExceededText="true" 
+            maxLength="1000" 
+            width="100%" 
+            height="120px" 
+            value="{path: 'commentsText', type: 'sap.ui.model.type.String'}"/>
+
+        <Dialog 
+            id="commentHistoryDialog1223" 
+            title="Comment History" 
+            class="commentHistory"
+            stretch="false" 
+            contentWidth="50%" 
+            afterClose="onCloseHistoryDialog"
+            afterOpen="handler.onDialogOpen">
+
+            <customHeader>
+                <Toolbar id="_IDGenToolbar123">
+                    <Title id="_IDGenTitle123" text="Comment History"/>
+                    <ToolbarSpacer id="_IDGenToolbarSpacer123"/>
+                    <Button id="_IDGenButton123" text="Close" press="handler.onCloseHistoryDialog"/>
+                </Toolbar>
+            </customHeader>
+<ScrollContainer id="commentHistoryVBox123" class="chatContainer" width="100%" height="400px" vertical="true">
+    <!-- Chat Message List -->
+    <List id="chatList1" items="{path : 'purchaseToComments',  parameters: { $orderby: 'createdAt' }, filters: [{ path: 'customerId', operator: 'EQ', value1: null } ]}" class="chatList" >
+        <CustomListItem id="_IDGenCustomListItem11" class="items">
+                <HBox id="_IDGenHBox1" justifyContent="{= ${user} === 'C' ? 'Start' : 'End'}" alignItems="{= ${user} === 'C' ? 'Start' : 'End'}" class ="messageContainer">
+                    <VBox id="vbox341" class="messageHeader">
+                        <Text id="_IDGenText51" text="{= %{user} === 'C' ? 'Customer' : 'Mahindra'}" class="messageTime" />
+                        <Text id="_IDGenText41" text="{commentsText}" class="messageText"/>
+                        <Text id="_IDGenText31" text="{path: 'createdAt', formatter: 'handler.formatDate'}" class="messageTime" />
+                    </VBox>
+                </HBox>
+        </CustomListItem>
+    </List>
+</ScrollContainer>
+        </Dialog>
+    </VBox>
+</core:FragmentDefinition>

@@ -1,0 +1,2 @@
+sap.ui.define(["sap/m/MessageToast"],function(e){"use strict";return{syncDelivery:async function(e){const t=e.sPath;const s=t.match(/purchaseOrderUuid=([\w-]{36})/);let n;if(s&&s[1]){n=s[1]}let i=e.getModel().bindContext(`/SyncDeliveryDetails(...)`);i.setParameter("purchaseOrderUuid",n);await i.execute();const r=i.getBoundContext();const u=r.getValue();debugger;setTimeout(function(){debugger;e.refresh()}.bind(this),800)}}});
+//# sourceMappingURL=SyncDeliveryDetails.js.map

@@ -1,0 +1,3 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<Text core:require="{ handler: 'sales/ext/fragment/PartnerRole'}" text="{path: 'partnerRole', formatter: 'handler.formatter.formatText'}" />
+</core:FragmentDefinition>

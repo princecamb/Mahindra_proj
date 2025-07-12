@@ -1,0 +1,13 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<!-- <Button core:require="{ handler: 'sales/ext/fragment/DateColumn'}" text="Sample Text" press="handler.onPress" /> -->
+	<VBox id="_IDGenVBox7"  core:require="{ handler: 'sales/ext/fragment/DateColumn'}" >
+		<Text id="_IDGenText1" text="{path : 'delDate'}" visible="{= ${IsActiveEntity} }"></Text>
+		<DatePicker
+            id="myDatePicker"
+            value="{path : 'delDate'}"
+            visible="{= !${IsActiveEntity} }"
+			minDate="{ui>/minDate}"
+			change="handler.onLiveChange"
+			/>
+	</VBox>
+</core:FragmentDefinition>

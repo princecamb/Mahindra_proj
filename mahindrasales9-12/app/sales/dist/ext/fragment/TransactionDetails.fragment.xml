@@ -1,0 +1,34 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m"
+	xmlns:l="sap.ui.layout" xmlns:macros="sap.fe.macros" xmlns:layout="sap.ui.layout.form">
+	<!-- <l:VerticalLayout  core:require="{handler: 'sales/ext/fragment/TransactionDetails'}">
+		<Text text="TransactionDetails" />
+		<Button text="TransactionDetails" press="handler.predefinedMethod" />
+	</l:VerticalLayout> -->
+	<layout:SimpleForm
+        core:require="{ handler: 'sales/ext/fragment/TransactionDetails'}"
+        id="transaction-details"
+        editable="false"
+        layout="ColumnLayout"
+        class="simpleForm"
+        columnsM="2"
+        columnsL="3"
+        columnsXL="4"
+        >
+
+        <layout:content>
+
+            <Label id="transactionId-l"  text="Transaction ID" labelFor="transactionId"/>
+            <Text id="transactionId" text="{path : 'transactionId', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="accountNo-l"  text="Account Number" labelFor="accountNo" />
+            <Text id="accountNo" text="{path : 'accountNo', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="amount-l"  text="Amount" labelFor="amount" />
+            <Text id="amount" text="{path : 'amount', formatter: 'handler.formatter.formatText'}" />
+
+			<Label id="paymentMethod-l"  text="Payment Method" labelFor="paymentMethod" />
+            <Text id="paymentMethod" text="{path : 'paymentMethod', formatter: 'handler.formatter.formatText'}" />
+
+        </layout:content>
+    </layout:SimpleForm>
+</core:FragmentDefinition>

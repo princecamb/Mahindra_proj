@@ -1,0 +1,9 @@
+PATCH http://localhost:4004/odata/v4/my/PurchaseEnquiry(purchaseEnquiryUuid=8cdcd938-b0ff-45e4-b60b-e71ea7892281,IsActiveEntity=true)
+Content-Type: application/json
+Accept: application/json
+OData-Version: 4.0
+
+{
+  
+}
+

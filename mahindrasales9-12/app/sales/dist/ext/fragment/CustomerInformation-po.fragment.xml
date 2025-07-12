@@ -1,0 +1,74 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:macros="sap.fe.macros" xmlns:layout="sap.ui.layout.form">
+	<!-- <VBox core:require="{ handler: 'sales/ext/fragment/CustomerInformation-po'}">
+		<Button text="CustomerInformation-po" press="handler.onPress" />
+	</VBox> -->
+	<layout:SimpleForm
+        core:require="{ handler: 'sales/ext/fragment/CustomerInformation'}"
+        id="generalInformationForm-po"
+        editable="false"
+        layout="ColumnLayout"
+        class="simpleForm"
+        columnsM="2"
+        columnsL="3"
+        columnsXL="4"
+        >
+
+        <layout:content>
+
+            <Label id="_IDGenLabel100" text="Company Name" labelFor="companyNameText-po"/>
+            <Text id="companyNameText-po" text="{path : 'purchaseToCustomer/companyName', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="_IDGenLabel101" text="Name" labelFor="nameText-po" />
+            <Text id="nameText-po" text="{path : 'purchaseToCustomer/name', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="_IDGenLabel118" text="Customer Code" labelFor="customeridText" />
+            <Text id="customeridText" text="{path : 'purchaseToCustomer/sapCustomerId', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="_IDGenLabel102" text="Address" labelFor="addressText-po" />
+            <Text id="addressText-po" text="{path : 'purchaseToCustomer/address', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="_IDGenLabel103" text="Location" labelFor="locationText-po" />
+            <Text id="locationText-po" text="{path : 'purchaseToCustomer/location', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="_IDGenLabel104" text="Job Title" labelFor="jobTitleText-po" />
+            <Text id="jobTitleText-po" text="{path : 'purchaseToCustomer/jobTitle', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="_IDGenLabel105" text="Contact Person" labelFor="contactPersonText-po" />
+            <Text id="contactPersonText-po" text="{path : 'contactPerson', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="_IDGenLabel106" text="Department" labelFor="departmentText-po" />
+            <Text id="departmentText-po" text="{path : 'purchaseToCustomer/department', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="_IDGenLabel107" text="Phone" labelFor="phoneText-po" />
+            <Text id="phoneText-po" text="{path : 'purchaseToCustomer/phone', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="_IDGenLabel108" text="Email" labelFor="emailText-po" />
+            <Text id="emailText-po" text="{path : 'purchaseToCustomer/email', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="_IDGenLabel109" text="Virtual Account Number" labelFor="virtualAccountNumberText-po" />
+            <Text id="virtualAccountNumberText-po" text="{path : 'purchaseToCustomer/van', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="_IDGenLabel110" text="Tax ID" labelFor="taxIdText-po" />
+            <Text id="taxIdText-po" text="{path : 'purchaseToCustomer/taxId', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="_IDGenLabel112" text="Language" labelFor="languageText-po" />
+            <Text id="languageText-po" text="{path : 'purchaseToCustomer/Language', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="_IDGenLabel113" text="City" labelFor="cityText-po" />
+            <Text id="cityText-po" text="{path : 'purchaseToCustomer/City', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="_IDGenLabel114" text="Country" labelFor="countryText-po" />
+            <Text id="countryText-po" text="{path : 'purchaseToCustomer/Country', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="_IDGenLabel115" text="Postal Code" labelFor="postalCodeText-po" />
+            <Text id="postalCodeText-po" text="{path : 'purchaseToCustomer/postalCode', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="_IDGenLabel116" text="Street" labelFor="streetText-po" />
+            <Text id="streetText-po" text="{path : 'purchaseToCustomer/Street', formatter: 'handler.formatter.formatText'}"  />
+
+            <Label id="_IDGenLabel117" text="Currency" labelFor="currencyText-po" />
+            <Text id="currencyText-po" text="{path : 'purchaseToCustomer/Currency', formatter: 'handler.formatter.formatText'}" />
+
+        </layout:content>
+    </layout:SimpleForm>
+</core:FragmentDefinition>

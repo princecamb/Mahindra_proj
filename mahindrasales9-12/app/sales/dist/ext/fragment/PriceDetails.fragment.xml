@@ -1,0 +1,23 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:macros="sap.fe.macros">
+    <HBox core:require="{ handler: 'sales/ext/fragment/PriceDetails'}" 
+          class="customPriceDetailsHBox">
+          
+        <!-- Total Amount (Extreme Left) -->
+        <VBox class="leftAlign">
+            <Label id="totalAmount1y" text="Total Amount" />
+            <Text id="totalAmount2u" text=""/>
+        </VBox>
+
+        <!-- Tax Amount (Center) -->
+        <VBox class="centerAlign">
+            <Label id="taxAmountl" text="Tax Amount" />
+            <Text id="taxAmount2" text=""/>
+        </VBox>
+
+        <!-- Grand Total (Extreme Right) -->
+        <VBox class="rightAlign">
+            <Label id="grandtotal" text="Grand Total" />
+            <Text id="grandtotal3" text=""/> 
+        </VBox>
+    </HBox>
+</core:FragmentDefinition>

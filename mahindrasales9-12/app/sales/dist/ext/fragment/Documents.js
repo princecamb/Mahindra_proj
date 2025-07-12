@@ -1,0 +1,2 @@
+sap.ui.define(["sap/m/MessageToast"],function(e){"use strict";return{onOpenPressed:async function(e){debugger;var r=e.oSource.getModel().getServiceUrl();var t=e.oSource.mProperties.url;if(!t.startsWith(r)){t=r+t;e.oSource.mProperties.url=t}this.showSideContent("GeneratedFacet1")}}});
+//# sourceMappingURL=Documents.js.map

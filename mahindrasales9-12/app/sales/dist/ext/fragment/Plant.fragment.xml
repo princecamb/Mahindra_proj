@@ -1,0 +1,19 @@
+<!-- <core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<Button core:require="{ handler: 'sales/ext/fragment/Plant'}" text="Sample Text" press="handler.onPress" />
+</core:FragmentDefinition> -->
+
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+   <VBox id="_IDGenVBox123" core:require="{ handler: 'sales/ext/fragment/Plant'}">
+	<Text id="_IDGenText123" text="{path : 'plant'}" visible="{ui>/text}"></Text>
+	<ComboBox 
+    id="myComboBox1" 
+    width="100%"
+    selectedKey="{path: 'plant'}"
+    visible="{ui>/comboBox}"
+    loadItems="handler.onPlantChange"
+	>
+    <!-- <core:Item key="{plant}" text="{plant}" /> -->
+    </ComboBox>
+	</VBox>
+</core:FragmentDefinition>
+

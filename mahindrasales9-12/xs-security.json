@@ -1,0 +1,21 @@
+{
+  "xsappname": "mahindra_sales",
+  "tenant-mode": "dedicated",
+  "description": "Security profile of called application",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.mahindra_user",
+      "description": "UAATest"
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "mahindra_user",
+      "description": "UAATest roletemplate",
+      "scope-references": [
+        "$XSAPPNAME.mahindra_user"
+      ]
+    }
+  ],
+  "attributes": []
+}

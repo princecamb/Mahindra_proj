@@ -1,0 +1,74 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:macros="sap.fe.macros" xmlns:layout="sap.ui.layout.form">
+	<!-- <VBox core:require="{ handler: 'sales/ext/fragment/CustomerInformation'}">
+		<Button text="CustomerInformation" press="handler.onPress" />
+	</VBox> -->
+	<layout:SimpleForm
+        core:require="{ handler: 'sales/ext/fragment/CustomerInformation'}"
+        id="generalInformationForm"
+        editable="false"
+        layout="ColumnLayout"
+        class="simpleForm"
+        columnsM="2"
+        columnsL="3"
+        columnsXL="4"
+        >
+
+        <layout:content>
+
+            <Label id="_IDGenLabel3" text="Company Name" labelFor="companyNameText"/>
+            <Text id="companyNameText" text="{path : 'enquiryToCustomer/companyName', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="_IDGenLabel6" text="Name" labelFor="nameText" />
+            <Text id="nameText" text="{path : 'enquiryToCustomer/name', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="_IDGenLabel18" text="Customer Id" labelFor="customerCodeText" />
+            <Text id="customerCodeText" text="{path : 'enquiryToCustomer/sapCustomerId', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="_IDGenLabel1" text="Address" labelFor="addressText" />
+            <Text id="addressText" text="{path : 'enquiryToCustomer/address', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="_IDGenLabel2" text="Location" labelFor="locationText" />
+            <Text id="locationText" text="{path : 'enquiryToCustomer/location', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="_IDGenLabel4" text="Job Title" labelFor="jobTitleText" />
+            <Text id="jobTitleText" text="{path : 'enquiryToCustomer/jobTitle', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="_IDGenLabel5" text="Contact Person" labelFor="contactPersonText" />
+            <Text id="contactPersonText" text="{path : 'contactPerson', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="_IDGenLabel7" text="Department" labelFor="departmentText" />
+            <Text id="departmentText" text="{path : 'enquiryToCustomer/department', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="_IDGenLabel8" text="Phone" labelFor="phoneText" />
+            <Text id="phoneText" text="{path : 'enquiryToCustomer/phone', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="_IDGenLabel9" text="Email" labelFor="emailText" />
+            <Text id="emailText" text="{path : 'enquiryToCustomer/email', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="_IDGenLabel10" text="Virtual Account Number" labelFor="virtualAccountNumberText" />
+            <Text id="virtualAccountNumberText" text="{path : 'enquiryToCustomer/van', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="_IDGenLabel11" text="Tax ID" labelFor="taxIdText" />
+            <Text id="taxIdText" text="{path : 'enquiryToCustomer/taxId', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="_IDGenLabel12" text="Language" labelFor="languageText" />
+            <Text id="languageText" text="{path : 'enquiryToCustomer/Language', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="_IDGenLabel13" text="City" labelFor="cityText" />
+            <Text id="cityText" text="{path : 'enquiryToCustomer/City', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="_IDGenLabel14" text="Country" labelFor="countryText" />
+            <Text id="countryText" text="{path : 'enquiryToCustomer/Country', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="_IDGenLabel15" text="Postal Code" labelFor="postalCodeText" />
+            <Text id="postalCodeText" text="{path : 'enquiryToCustomer/postalCode', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="_IDGenLabel16" text="Street" labelFor="streetText" />
+            <Text id="streetText" text="{path : 'enquiryToCustomer/location', formatter: 'handler.formatter.formatText'}"  />
+
+            <Label id="_IDGenLabel17" text="Currency" labelFor="currencyText" />
+            <Text id="currencyText" text="{path : 'enquiryToCustomer/Currency', formatter: 'handler.formatter.formatText'}" />
+
+        </layout:content>
+    </layout:SimpleForm>
+</core:FragmentDefinition>

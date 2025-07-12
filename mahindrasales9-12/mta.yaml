@@ -1,0 +1,153 @@
+_schema-version: 3.3.0
+ID: Mahindra_sales
+description: A simple CAP project.
+version: 1.0.0
+modules:
+- name: Mahindra_sales-srv
+  type: nodejs
+  path: gen/srv
+  requires:
+  - name: Mahindra_sales-db
+  - name: uaa_Mahindra_sales
+  - name: abap_dest
+  - name: Connectivity_instance
+  - name: Mahindra_sales-destination-service
+  provides:
+  - name: srv-api
+    properties:
+      srv-url: ${default-url}
+  parameters:
+    buildpack: nodejs_buildpack
+    readiness-health-check-http-endpoint: /health
+    readiness-health-check-type: http
+  build-parameters:
+    builder: npm
+- name: Mahindra_sales-db-deployer
+  type: hdb
+  path: gen/db
+  requires:
+  - name: Mahindra_sales-db
+  parameters:
+    buildpack: nodejs_buildpack
+- name: Mahindra_sales-destination-content
+  type: com.sap.application.content
+  requires:
+  - name: Mahindra_sales-destination-service
+    parameters:
+      content-target: true
+  - name: Mahindra_sales_html_repo_host
+    parameters:
+      service-key:
+        name: Mahindra_sales_html_repo_host-key
+  - name: uaa_Mahindra_sales
+    parameters:
+      service-key:
+        name: uaa_Mahindra_sales-key
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: RFC_Sales_Mahindra_sales_html_repo_host
+          ServiceInstanceName: Mahindra_sales-html5-app-host-service
+          ServiceKeyName: Mahindra_sales_html_repo_host-key
+          sap.cloud.service: RFC_Sales
+        - Authentication: OAuth2UserTokenExchange
+          Name: RFC_Sales_uaa_Mahindra_sales
+          ServiceInstanceName: Mahindra_sales-xsuaa-service
+          ServiceKeyName: uaa_Mahindra_sales-key
+          sap.cloud.service: RFC_Sales
+        existing_destinations_policy: ignore
+  build-parameters:
+    no-source: true
+- name: Mahindra_sales-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: Mahindra_sales_html_repo_host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - sales.zip
+      name: sales
+      target-path: resources/
+- name: sales
+  type: html5
+  path: app/sales
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+resources:
+- name: abap_dest
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: destination
+    service-plan: lite
+- name: Connectivity_instance
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: connectivity
+    service-plan: lite
+- name: Mahindra_sales-db
+  type: com.sap.xs.hdi-container
+  parameters:
+    service: hana
+    service-plan: hdi-shared
+- name: Mahindra_sales-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          - Authentication: NoAuthentication
+            HTML5.DynamicDestination: true
+            HTML5.ForwardAuthToken: true
+            Name: Mahindra_sales-srv-api
+            ProxyType: Internet
+            Type: HTTP
+            URL: ~{srv-api/srv-url}
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: Mahindra_sales-destination-service
+    service-plan: lite
+  requires:
+  - name: srv-api
+- name: Mahindra_sales_html_repo_host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: Mahindra_sales-html5-app-host-service
+    service-plan: app-host
+- name: uaa_Mahindra_sales
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      tenant-mode: dedicated
+      xsappname: Mahindra_sales-${org}-${space}
+    path: ./xs-security.json
+    service: xsuaa
+    service-name: Mahindra_sales-xsuaa-service
+    service-plan: application
+parameters:
+  deploy_mode: html5-repo
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+  - builder: custom
+    commands:
+    - npm ci
+    - npx cds build --production

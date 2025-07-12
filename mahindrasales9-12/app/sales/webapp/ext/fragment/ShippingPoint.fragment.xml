@@ -1,0 +1,15 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<!-- <Button core:require="{ handler: 'sales/ext/fragment/ShippingPoint'}" text="Sample Text" press="handler.onPress" /> -->
+	<VBox id="_IDGenVBox23" core:require="{ handler: 'sales/ext/fragment/ShippingPoint'}">
+	<Text id="_IDGenText93" text="{path : 'shippingPoint'}" visible="{= ${IsActiveEntity} }"></Text>
+	<ComboBox 
+    id="myComboBox2" 
+    width="100%"
+    selectedKey="{path: 'shippingPoint'}"
+    visible="{= !${IsActiveEntity} }"
+    loadItems="handler.loadShippingPoint"
+	>
+    <!-- <core:Item key="{shippingPoint}" text="{shippingPoint}" /> -->
+    </ComboBox>
+	</VBox>
+</core:FragmentDefinition>

@@ -1,0 +1,898 @@
+{
+    "_version": "1.60.0",
+    "sap.app": {
+        "id": "sales",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:lrop",
+            "version": "1.15.2",
+            "toolsId": "047a11e5-35d6-4696-b4bf-cfe1153e7337"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "odata/v4/my/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "odataVersion": "4.0"
+                }
+            }
+        },
+        "crossNavigation": {
+            "inbounds": {
+                "sales_app_mahindra-display": {
+                    "semanticObject": "sales_app_mahindra",
+                    "action": "display",
+                    "title": "{{flpTitle}}",
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    }
+                },
+                "SalesObj-display": {
+                    "semanticObject": "SalesObj",
+                    "action": "display",
+                    "title": "{{flpTitle}}",
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    }
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": false,
+        "dependencies": {
+            "minUI5Version": "1.120.17",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.fe.templates": {},
+                "sap.fe.macros": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "sales.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "operationMode": "Server",
+                    "autoExpandSelect": true,
+                    "earlyRequests": true
+                }
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {},
+            "routes": [
+                {
+                    "pattern": ":?query:",
+                    "name": "PurchaseEnquiryList",
+                    "target": "PurchaseEnquiryList"
+                },
+                {
+                    "pattern": "PurchaseEnquiry({key}):?query:",
+                    "name": "PurchaseEnquiryObjectPage",
+                    "target": "PurchaseEnquiryObjectPage"
+                },
+                {
+                    "name": "PurchaseOrderObjectPage",
+                    "pattern": "PurchaseOrder({PurchaseOrderKey}):?query:",
+                    "target": "PurchaseOrderObjectPage"
+                }
+            ],
+            "targets": {
+                "PurchaseEnquiryList": {
+                    "type": "Component",
+                    "id": "PurchaseEnquiryList",
+                    "name": "sap.fe.templates.ListReport",
+                    "options": {
+                        "settings": {
+                            "contextPath": "/PurchaseEnquiry",
+                            "variantManagement": "None",
+                            "navigation": {
+                                "PurchaseEnquiry": {
+                                    "detail": {
+                                        "route": "PurchaseEnquiryObjectPage"
+                                    }
+                                },
+                                "PurchaseOrder": {
+                                    "detail": {
+                                        "route": "PurchaseOrderObjectPage"
+                                    }
+                                }
+                            },
+                            "controlConfiguration": {
+                                "@com.sap.vocabularies.UI.v1.LineItem": {
+                                    "tableSettings": {
+                                        "type": "GridTable",
+                                        "disableCopyToClipboard": false,
+                                        "enableExport": false
+                                    }
+                                },
+                                "@com.sap.vocabularies.UI.v1.LineItem#tableView": {
+                                    "tableSettings": {
+                                        "disableCopyToClipboard": false,
+                                        "type": "GridTable"
+                                    }
+                                },
+                                "@com.sap.vocabularies.UI.v1.LineItem#tableView1": {
+                                    "tableSettings": {
+                                        "disableCopyToClipboard": false,
+                                        "type": "GridTable"
+                                    }
+                                },
+                                "/PurchaseOrder/@com.sap.vocabularies.UI.v1.LineItem#tableView": {
+                                    "tableSettings": {
+                                        "disableCopyToClipboard": false,
+                                        "type": "GridTable"
+                                    }
+                                },
+                                "/PurchaseOrder/@com.sap.vocabularies.UI.v1.LineItem#tableView2": {
+                                    "tableSettings": {
+                                        "type": "GridTable"
+                                    }
+                                },
+                                "/PurchaseOrder/@com.sap.vocabularies.UI.v1.LineItem#tableView7": {
+                                    "tableSettings": {
+                                        "type": "GridTable"
+                                    }
+                                },
+                                "/PurchaseOrder/@com.sap.vocabularies.UI.v1.LineItem#tableView8": {
+                                    "tableSettings": {
+                                        "type": "GridTable"
+                                    }
+                                },
+                                "/PurchaseOrder/@com.sap.vocabularies.UI.v1.LineItem#tableView9": {
+                                    "tableSettings": {
+                                        "type": "GridTable"
+                                    }
+                                }
+                            },
+                            "views": {
+                                "paths": [
+                                    {
+                                        "key": "tableView",
+                                        "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#tableView"
+                                    },
+                                    {
+                                        "key": "tableView1",
+                                        "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#tableView1"
+                                    },
+                                    {
+                                        "key": "tableView2",
+                                        "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#tableView2"
+                                    },
+                                    {
+                                        "key": "tableView12",
+                                        "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#tableView",
+                                        "entitySet": "PurchaseOrder"
+                                    },
+                                    {
+                                        "key": "tableView7",
+                                        "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#tableView7",
+                                        "entitySet": "PurchaseOrder"
+                                    },
+                                    {
+                                        "key": "tableView8",
+                                        "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#tableView8",
+                                        "entitySet": "PurchaseOrder"
+                                    },
+                                    {
+                                        "key": "tableView21",
+                                        "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#tableView2",
+                                        "entitySet": "PurchaseOrder"
+                                    },
+                                    {
+                                        "key": "tableView9",
+                                        "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#tableView9",
+                                        "entitySet": "PurchaseOrder"
+                                    }
+                                ]
+                            },
+                            "initialLoad": "Enabled",
+                            "content": {
+                                "header": {
+                                    "actions": {
+                                        "sync": {
+                                            "press": "sales.ext.controller.Sync.sync",
+                                            "visible": true,
+                                            "enabled": true,
+                                            "text": "sync"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "PurchaseEnquiryObjectPage": {
+                    "type": "Component",
+                    "id": "PurchaseEnquiryObjectPage",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options": {
+                        "settings": {
+                            "editableHeaderContent": false,
+                            "contextPath": "/PurchaseEnquiry",
+                            "content": {
+                                "body": {
+                                    "sections": {
+                                        "Documents": {
+                                            "template": "sales.ext.fragment.Documents",
+                                            "position": {
+                                                "placement": "After",
+                                                "anchor": "QuotationDetail"
+                                            },
+                                            "title": "Documents"
+                                        },
+                                        "Comments": {
+                                            "template": "sales.ext.fragment.Comments",
+                                            "position": {
+                                                "placement": "After",
+                                                "anchor": "Documents"
+                                            },
+                                            "title": "Comments"
+                                        },
+                                        "CustomerInformation": {
+                                            "template": "sales.ext.fragment.CustomerInformation",
+                                            "position": {
+                                                "placement": "Before",
+                                                "anchor": "EnquiryDetails1"
+                                            },
+                                            "title": "Customer Information"
+                                        },
+                                        "EnquiryDetails1": {
+                                            "template": "sales.ext.fragment.EnquiryDetails",
+                                            "position": {
+                                                "placement": "Before",
+                                                "anchor": "Partners"
+                                            },
+                                            "title": "Inquiry Details"
+                                        },
+                                        "QuotationDetail": {
+                                            "subSections": {
+                                                "PriceDetails": {
+                                                    "template": "sales.ext.fragment.PriceDetails",
+                                                    "title": "Price Details"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "footer": {
+                                    "actions": {
+                                        "send": {
+                                            "press": "sales.ext.controller.SendQuotation.SendQuotation",
+                                            "visible": true,
+                                            "enabled": true,
+                                            "text": "Send Quotation"
+                                        }
+                                    }
+                                }
+                            },
+                            "controlConfiguration": {
+                                "enquiryToVehicle/@com.sap.vocabularies.UI.v1.LineItem#tableMacro": {
+                                    "tableSettings": {
+                                        "disableCopyToClipboard": false,
+                                        "enablePaste": false,
+                                        "type": "GridTable"
+                                    },
+                                    "columns": {
+                                        "Discheck": {
+                                            "header": "Percentage Check",
+                                            "position": {
+                                                "anchor": "Discount",
+                                                "placement": "After"
+                                            },
+                                            "template": "sales.ext.fragment.Discheck"
+                                        },
+                                        "Discount": {
+                                            "header": "Discount",
+                                            "width": "300px",
+                                            "position": {
+                                                "anchor": "DataField::band",
+                                                "placement": "After"
+                                            },
+                                            "template": "sales.ext.fragment.Discount"
+                                        },
+                                        "Plant": {
+                                            "header": "Plant",
+                                            "width": "300px",
+                                            "position": {
+                                                "anchor": "DataField::plant",
+                                                "placement": "After"
+                                            },
+                                            "template": "sales.ext.fragment.Plant"
+                                        }
+                                    }
+                                },
+                                "enquiryToVehicle/@com.sap.vocabularies.UI.v1.LineItem#VehicleDetails": {
+                                    "tableSettings": {
+                                        "disableCopyToClipboard": false,
+                                        "enablePaste": false,
+                                        "type": "GridTable"
+                                    },
+                                    "columns": {
+                                        "Discheck": {
+                                            "header": "Discount Check",
+                                            "position": {
+                                                "anchor": "Discount",
+                                                "placement": "After"
+                                            },
+                                            "template": "sales.ext.fragment.Discheck"
+                                        },
+                                        "Discount": {
+                                            "header": "Discount",
+                                            "width": "300px",
+                                            "position": {
+                                                "anchor": "DataField::band",
+                                                "placement": "After"
+                                            },
+                                            "template": "sales.ext.fragment.Discount"
+                                        },
+                                        "Plant": {
+                                            "header": "Plant",
+                                            "width": "300px",
+                                            "position": {
+                                                "anchor": "PreferredDeliveryLocation",
+                                                "placement": "After"
+                                            },
+                                            "template": "sales.ext.fragment.Plant"
+                                        }
+                                    }
+                                },
+                                "enquiryToVehicle/@com.sap.vocabularies.UI.v1.LineItem#VehicleDetails1": {
+                                    "tableSettings": {
+                                        "enableExport": false,
+                                        "enablePaste": false,
+                                        "disableCopyToClipboard": false,
+                                        "type": "GridTable"
+                                    },
+                                    "columns": {
+                                        "Discheck": {
+                                            "header": "Discount Check",
+                                            "position": {
+                                                "anchor": "DataField::band",
+                                                "placement": "After"
+                                            },
+                                            "template": "sales.ext.fragment.Discheck"
+                                        },
+                                        "MaterialCode": {
+                                            "header": "Material Code",
+                                            "width": "300px",
+                                            "position": {
+                                                "anchor": "DataField::vehicleName",
+                                                "placement": "Before"
+                                            },
+                                            "template": "sales.ext.fragment.MaterialCode"
+                                        },
+                                        "PartnerRole": {
+                                            "header": "Partner Role",
+                                            "position": {
+                                                "anchor": "DataField::vehicleColor",
+                                                "placement": "After"
+                                            },
+                                            "template": "sales.ext.fragment.PartnerRole"
+                                        },
+                                        "PartnerNumber": {
+                                            "header": "Partner Number",
+                                            "width": "300px",
+                                            "position": {
+                                                "anchor": "PartnerRole",
+                                                "placement": "After"
+                                            },
+                                            "template": "sales.ext.fragment.PartnerNumber"
+                                        },
+                                        "Quantity": {
+                                            "header": "Quantity",
+                                            "width": "300px",
+                                            "position": {
+                                                "anchor": "PartnerNumber",
+                                                "placement": "After"
+                                            },
+                                            "template": "sales.ext.fragment.Quantity"
+                                        },
+                                        "DiscountedPrice": {
+                                            "header": "Discounted Price",
+                                            "width": "300px",
+                                            "position": {
+                                                "anchor": "Discheck",
+                                                "placement": "After"
+                                            },
+                                            "template": "sales.ext.fragment.DiscountedPrice"
+                                        },
+                                        "TotalPrice": {
+                                            "header": "Total Price",
+                                            "width": "300px",
+                                            "position": {
+                                                "anchor": "DataField::taxPercentage",
+                                                "placement": "After"
+                                            },
+                                            "template": "sales.ext.fragment.TotalPrice"
+                                        },
+                                        "Discount": {
+                                            "header": "Discount",
+                                            "width": "300px",
+                                            "position": {
+                                                "anchor": "DataField::band",
+                                                "placement": "After"
+                                            },
+                                            "template": "sales.ext.fragment.Discount"
+                                        },
+                                        "PreferredDeliveryDate": {
+                                            "header": "Preferred Delivery Date",
+                                            "position": {
+                                                "anchor": "TotalPrice",
+                                                "placement": "After"
+                                            },
+                                            "template": "sales.ext.fragment.PreferredDeliveryDate",
+                                            "width": "300px"
+                                        },
+                                        "PreferredDeliveryLocation": {
+                                            "header": "Preferred Delivery Location",
+                                            "width": "300px",
+                                            "position": {
+                                                "anchor": "PreferredDeliveryDate",
+                                                "placement": "After"
+                                            },
+                                            "template": "sales.ext.fragment.PreferredDeliveryLocation"
+                                        },
+                                        "Plant": {
+                                            "header": "Plant",
+                                            "width": "300px",
+                                            "position": {
+                                                "anchor": "PreferredDeliveryLocation",
+                                                "placement": "After"
+                                            },
+                                            "template": "sales.ext.fragment.Plant"
+                                        }
+                                    }
+                                },
+                                "enquiryToPartners/@com.sap.vocabularies.UI.v1.LineItem#Partners": {
+                                    "tableSettings": {
+                                        "type": "GridTable",
+                                        "quickVariantSelection": {
+                                            "showCounts": false
+                                        }
+                                    },
+                                    "columns": {
+                                        "PartnerNumber": {
+                                            "header": "Partner Number",
+                                            "width": "300px",
+                                            "position": {
+                                                "anchor": "PartnerName",
+                                                "placement": "Before"
+                                            },
+                                            "template": "sales.ext.fragment.PartnerNumber"
+                                        },
+                                        "PartnerName": {
+                                            "header": "Partner Name",
+                                            "width": "300px",
+                                            "template": "sales.ext.fragment.PartnerName"
+                                        },
+                                        "PartnerRole": {
+                                            "header": "Partner Role",
+                                            "width": "300px",
+                                            "position": {
+                                                "anchor": "PartnerNumber",
+                                                "placement": "After"
+                                            },
+                                            "template": "sales.ext.fragment.PartnerRole"
+                                        }
+                                    }
+                                },
+                                "enquiryToVehicle/@com.sap.vocabularies.UI.v1.LineItem#QuotationDetail": {
+                                    "columns": {
+                                        "MaterialCode": {
+                                            "header": "materialCode",
+                                            "position": {
+                                                "placement": "After"
+                                            },
+                                            "template": "sales.ext.fragment.MaterialCode"
+                                        },
+                                        "Vehiclename": {
+                                            "header": "vehicleName",
+                                            "position": {
+                                                "anchor": "MaterialCode",
+                                                "placement": "After"
+                                            },
+                                            "template": "sales.ext.fragment.Vehiclename"
+                                        },
+                                        "VehicleColor": {
+                                            "header": "vehicleColor",
+                                            "position": {
+                                                "anchor": "Vehiclename",
+                                                "placement": "After"
+                                            },
+                                            "template": "sales.ext.fragment.VehicleColor"
+                                        },
+                                        "Quantity": {
+                                            "header": "Quantity",
+                                            "position": {
+                                                "anchor": "VehicleColor",
+                                                "placement": "After"
+                                            },
+                                            "template": "sales.ext.fragment.Quantity"
+                                        },
+                                        "Priceperunit": {
+                                            "header": "Priceperunit",
+                                            "position": {
+                                                "anchor": "Quantity",
+                                                "placement": "After"
+                                            },
+                                            "template": "sales.ext.fragment.Priceperunit"
+                                        },
+                                        "Actualprice": {
+                                            "header": "actualPrice",
+                                            "position": {
+                                                "anchor": "Priceperunit",
+                                                "placement": "After"
+                                            },
+                                            "template": "sales.ext.fragment.Actualprice"
+                                        },
+                                        "Band": {
+                                            "header": "band",
+                                            "position": {
+                                                "anchor": "Actualprice",
+                                                "placement": "After"
+                                            },
+                                            "template": "sales.ext.fragment.Band"
+                                        }
+                                    }
+                                },
+                                "enquiryToVehicle/@com.sap.vocabularies.UI.v1.LineItem#VehicleDetails2": {
+                                    "columns": {
+                                        "MaterialCode": {
+                                            "header": "Material Code",
+                                            "position": {
+                                                "placement": "Before",
+                                                "anchor": "Vehiclename"
+                                            },
+                                            "template": "sales.ext.fragment.MaterialCode"
+                                        },
+                                        "Vehiclename": {
+                                            "header": "Vehicle Name",
+                                            "position": {
+                                                "anchor": "VehicleColor",
+                                                "placement": "Before"
+                                            },
+                                            "template": "sales.ext.fragment.Vehiclename"
+                                        },
+                                        "VehicleColor": {
+                                            "header": "Vehicle Color",
+                                            "position": {
+                                                "anchor": "Quantity",
+                                                "placement": "Before"
+                                            },
+                                            "template": "sales.ext.fragment.VehicleColor"
+                                        },
+                                        "Priceperunit": {
+                                            "header": "Price Per Unit",
+                                            "position": {
+                                                "anchor": "Actualprice",
+                                                "placement": "Before"
+                                            },
+                                            "template": "sales.ext.fragment.Priceperunit"
+                                        },
+                                        "Actualprice": {
+                                            "header": "Actual Price",
+                                            "position": {
+                                                "anchor": "Band",
+                                                "placement": "Before"
+                                            },
+                                            "template": "sales.ext.fragment.Actualprice"
+                                        },
+                                        "Quantity": {
+                                            "header": "Quantity",
+                                            "position": {
+                                                "anchor": "Priceperunit",
+                                                "placement": "Before"
+                                            },
+                                            "template": "sales.ext.fragment.Quantity"
+                                        },
+                                        "Band": {
+                                            "header": "Band(%)",
+                                            "position": {
+                                                "anchor": "DiscountedPrice",
+                                                "placement": "Before"
+                                            },
+                                            "template": "sales.ext.fragment.Band"
+                                        },
+                                        "DiscountedPrice": {
+                                            "header": "Discounted Price",
+                                            "position": {
+                                                "anchor": "TaxPercentage",
+                                                "placement": "Before"
+                                            },
+                                            "template": "sales.ext.fragment.DiscountedPrice"
+                                        },
+                                        "TaxPercentage": {
+                                            "header": "Tax Percentage",
+                                            "position": {
+                                                "anchor": "TotalPrice",
+                                                "placement": "Before"
+                                            },
+                                            "template": "sales.ext.fragment.TaxPercentage"
+                                        },
+                                        "TotalPrice": {
+                                            "header": "Total Price",
+                                            "position": {
+                                                "anchor": "PreferredDeliveryDate",
+                                                "placement": "Before"
+                                            },
+                                            "template": "sales.ext.fragment.TotalPrice"
+                                        },
+                                        "PreferredDeliveryDate": {
+                                            "header": "Preferred Delivery Date",
+                                            "position": {
+                                                "anchor": "PreferredDeliveryLocation",
+                                                "placement": "Before"
+                                            },
+                                            "template": "sales.ext.fragment.PreferredDeliveryDate"
+                                        },
+                                        "PreferredDeliveryLocation": {
+                                            "header": "Preferred Delivery Location",
+                                            "template": "sales.ext.fragment.PreferredDeliveryLocation"
+                                        },
+                                        "Plant": {
+                                            "header": "Plant",
+                                            "position": {
+                                                "anchor": "PreferredDeliveryLocation",
+                                                "placement": "After"
+                                            },
+                                            "template": "sales.ext.fragment.Plant"
+                                        },
+                                        "Discount": {
+                                            "header": "Discount",
+                                            "position": {
+                                                "anchor": "Band",
+                                                "placement": "After"
+                                            },
+                                            "template": "sales.ext.fragment.Discount"
+                                        },
+                                        "Discheck": {
+                                            "header": "Percentage Check",
+                                            "position": {
+                                                "anchor": "Discount",
+                                                "placement": "After"
+                                            },
+                                            "template": "sales.ext.fragment.Discheck"
+                                        }
+                                    },
+                                    "tableSettings": {
+                                        "type": "GridTable"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "PurchaseOrderObjectPage": {
+                    "type": "Component",
+                    "id": "PurchaseOrderObjectPage",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options": {
+                        "settings": {
+                            "navigation": {},
+                            "contextPath": "/PurchaseOrder",
+                            "content": {
+                                "body": {
+                                    "sections": {
+                                        "Document1": {
+                                            "template": "sales.ext.fragment.Document1",
+                                            "position": {
+                                                "placement": "After",
+                                                "anchor": "ViewInvoice"
+                                            },
+                                            "title": "Documents"
+                                        },
+                                        "Commets1": {
+                                            "template": "sales.ext.fragment.Commets1",
+                                            "position": {
+                                                "placement": "After",
+                                                "anchor": "Document1"
+                                            },
+                                            "title": "Comments"
+                                        },
+                                        "ViewInvoice": {
+                                            "template": "sales.ext.fragment.ViewInvoice",
+                                            "position": {
+                                                "anchor": "TransactionDetails",
+                                                "placement": "After"
+                                            },
+                                            "title": "Invoice/Bill"
+                                        },
+                                        "TransactionDetails": {
+                                            "template": "sales.ext.fragment.TransactionDetails",
+                                            "position": {
+                                                "placement": "After",
+                                                "anchor": "PaymentDetails1"
+                                            },
+                                            "title": "Transaction Details"
+                                        },
+                                        "CustomerInformation-po": {
+                                            "template": "sales.ext.fragment.CustomerInformation-po",
+                                            "position": {
+                                                "placement": "Before",
+                                                "anchor": "EnquiryDetials"
+                                            },
+                                            "title": "Customer Information"
+                                        }
+                                    }
+                                },
+                                "footer": {
+                                    "actions": {
+                                        "release-so": {
+                                            "press": "sales.ext.controller.RealseSO.REalseSO",
+                                            "visible": true,
+                                            "enabled": true,
+                                            "text": "Release SO"
+                                        }
+                                    }
+                                },
+                                "header": {
+                                    "visible": true
+                                }
+                            },
+                            "controlConfiguration": {
+                                "purchaseToVehicle/@com.sap.vocabularies.UI.v1.LineItem#VehicleDetails": {
+                                    "tableSettings": {
+                                        "disableCopyToClipboard": false,
+                                        "type": "GridTable",
+                                        "enablePaste": false
+                                    }
+                                },
+                                "purchaseToVehicle/@com.sap.vocabularies.UI.v1.LineItem#DeliveryDetails": {
+                                    "columns": {
+                                        "DateColumn": {
+                                            "header": "Delivery Date",
+                                            "position": {
+                                                "anchor": "DataField::delLocation",
+                                                "placement": "After"
+                                            },
+                                            "template": "sales.ext.fragment.DateColumn",
+                                            "width": "300px"
+                                        },
+                                        "Columns": {
+                                            "header": "Transportation Mode",
+                                            "position": {
+                                                "anchor": "DeliveryLeadTime",
+                                                "placement": "After"
+                                            },
+                                            "template": "sales.ext.fragment.Columns",
+                                            "width": "300px"
+                                        },
+                                        "DeliveryLeadTime": {
+                                            "header": "Delivery Lead Time",
+                                            "width": "300px",
+                                            "position": {
+                                                "anchor": "DateColumn",
+                                                "placement": "After"
+                                            },
+                                            "template": "sales.ext.fragment.DeliveryLeadTime"
+                                        },
+                                        "ShippingPoint": {
+                                            "header": "Shipping Point",
+                                            "width": "300px",
+                                            "position": {
+                                                "anchor": "DataField::plant",
+                                                "placement": "After"
+                                            },
+                                            "template": "sales.ext.fragment.ShippingPoint"
+                                        }
+                                    },
+                                    "actions": {
+                                        "sync-delivery": {
+                                            "press": "sales.ext.controller.SyncDeliveryDetails.syncDelivery",
+                                            "visible": true,
+                                            "enabled": true,
+                                            "requiresSelection": false,
+                                            "text": "Sync Delivery Details"
+                                        }
+                                    },
+                                    "tableSettings": {
+                                        "type": "GridTable",
+                                        "enableExport": false,
+                                        "enablePaste": false
+                                    }
+                                },
+                                "purchaseToPartners/@com.sap.vocabularies.UI.v1.LineItem#Partners": {
+                                    "tableSettings": {
+                                        "type": "GridTable",
+                                        "enablePaste": false,
+                                        "quickVariantSelection": {
+                                            "showCounts": false
+                                        }
+                                    },
+                                    "columns": {
+                                        "PartnerRole": {
+                                            "header": "Partner Role",
+                                            "width": "300px",
+                                            "position": {
+                                                "anchor": "DataField::partnerNumber",
+                                                "placement": "After"
+                                            },
+                                            "template": "sales.ext.fragment.PartnerRole"
+                                        }
+                                    }
+                                }
+                            },
+                            "editableHeaderContent": false
+                        }
+                    }
+                }
+            }
+        },
+        "extends": {
+            "extensions": {
+                "sap.ui.controllerExtensions": {
+                    "sap.fe.templates.ListReport.ListReportController": {
+                        "controllerName": "sales.ext.controller.List_page_sales"
+                    },
+                    "sap.fe.templates.ObjectPage.ObjectPageController": {
+                        "controllerName": "sales.ext.controller.Obj_page_sales"
+                    },
+                    "sap.fe.templates.ObjectPage.ObjectPageController#sales::PurchaseEnquiryObjectPage": {
+                        "controllerName": "sales.ext.controller.PurchaseEnquiryObjPage"
+                    },
+                    "sap.fe.templates.ObjectPage.ObjectPageController#sales::PurchaseOrderObjectPage": {
+                        "controllerName": "sales.ext.controller.Obj_PurchaseOrder_Page"
+                    }
+                }
+            }
+        }
+    },
+    "sap.fiori": {
+        "registrationIds": [],
+        "archeType": "transactional"
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "RFC_Sales"
+    }
+}

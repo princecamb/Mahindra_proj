@@ -1,0 +1,55 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" 
+    xmlns="sap.m" 
+    xmlns:upload="sap.m.upload" 
+    xmlns:macros="sap.fe.macros">
+	
+    <VBox id="_IDGenVBox4" core:require="{ handler: 'sales/ext/fragment/Documents' }">
+        <upload:UploadSet id="_IDGenUploadSet"
+            instantUpload="false"
+            uploadEnabled="false"
+            
+            uploadButtonInvisible="true"
+            afterItemAdded="handler.onAfterItemAdded"
+            afterItemRemoved="handler.onAfterRemoved"
+            items="{ path: 'enquiryToFile', 
+                     parameters: { $orderby: 'createdAt desc' }, 
+                     templateShareable: false }"
+            mode="MultiSelect">
+            
+            <upload:toolbar>
+                <OverflowToolbar id="_IDGenOverflowToolbar" >
+                    <ToolbarSpacer id="_IDGenToolbarSpacer6"  />
+                    <upload:UploadSetToolbarPlaceholder id="_IDGenUploadSetToolbarPlaceholder" />
+                </OverflowToolbar>
+            </upload:toolbar>
+
+            <upload:items>
+                <upload:UploadSetItem id="_IDGenUploadSetItem1" 
+                    fileName="{fileName}"
+                    mediaType="{mediaType}"
+                    url="{url}"
+                    enabledEdit="false"
+                    visibleEdit="false"
+                    visibleRemove="false"
+
+                    openPressed="handler.onOpenPressed">
+
+                    <upload:attributes>
+                        <ObjectAttribute id="_IDGenObjectAttribute3"
+                            title="Uploaded By"
+                            text="{createdBy}"
+                            active="false"/>
+                        <ObjectAttribute id="_IDGenObjectAttribute4"
+                            title="Uploaded on"
+                            text="{createdAt}"
+                            active="false"/>
+                        <ObjectAttribute id="_IDGenObjectAttribute5"
+                            title="File Size"
+                            text="{size}"
+                            active="false"/>
+                    </upload:attributes>
+                </upload:UploadSetItem>
+            </upload:items>
+        </upload:UploadSet>
+    </VBox>
+</core:FragmentDefinition>

@@ -1,0 +1,10 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<Text core:require="{ handler: 'sales/ext/fragment/TempPrice'}" text="{
+        	parts: [
+            	{ path: 'mDiscount'},
+            	{ path: 'band' },
+				{ path: 'actualPrice'}
+        	],
+        	formatter: 'handler.formatter.formatDiscountedPrice'
+    	}" />
+</core:FragmentDefinition>

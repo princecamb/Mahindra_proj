@@ -1,0 +1,1 @@
+{"version":3,"file":"TransactionDetails.js","names":["sap","ui","define","predefinedMethod","formatter","formatText","sValue"],"sources":["TransactionDetails-dbg.js"],"mappings":"AAAAA,IAAIC,GAAGC,OAAO,GAAI,WACd,aAEA,MAAO,CACHC,iBAAkB,WAAY,EAC9BC,UAAW,CACPC,WAAY,SAAUC,GAClB,OAAOA,GAAU,GACrB,GAGZ","ignoreList":[]}

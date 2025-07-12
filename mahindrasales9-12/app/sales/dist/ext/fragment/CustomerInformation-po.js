@@ -1,0 +1,2 @@
+sap.ui.define(["sap/m/MessageToast"],function(t){"use strict";return{onPress:function(e){t.show("Custom handler invoked.")},formatter:{formatText:function(t){return t||"_"}}}});
+//# sourceMappingURL=CustomerInformation-po.js.map

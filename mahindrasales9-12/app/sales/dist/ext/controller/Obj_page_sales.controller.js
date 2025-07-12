@@ -1,0 +1,2 @@
+sap.ui.define(["sap/ui/core/mvc/ControllerExtension","sap/m/MessageBox"],function(e,n){"use strict";var s,t,o,r,i,a,l,o,u,c,g=0,d=0;return e.extend("sales.ext.controller.Obj_page_sales",{override:{onInit:function(){debugger;var e=this.base.getExtensionAPI().getModel()}}})});
+//# sourceMappingURL=Obj_page_sales.controller.js.map

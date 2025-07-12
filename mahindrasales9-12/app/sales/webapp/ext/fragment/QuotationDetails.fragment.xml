@@ -1,0 +1,18 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:macros="sap.fe.macros" xmlns:layout="sap.ui.layout.form">
+    <VBox core:require="{ handler: 'sales/ext/fragment/QuotationDetails'}">
+        <!-- <Button text="QuotationDetails" press="handler.onPress"/> -->
+        <macros:Table id="Table05" metaPath="enquiryToVehicle/@com.sap.vocabularies.UI.v1.LineItem#tableMacro" readOnly="true" type="GridTable"/>
+        <Text text="" width="30px"/>
+        <Title text="Price Details"/>
+        <layout:SimpleForm core:require="{ handler: 'sales/ext/fragment/EnquiryDetails'}" id="price-details" editable="false" layout="ColumnLayout" class="simpleForm" columnsM="2" columnsL="3" columnsXL="4">
+            <layout:content>
+                <Label id="totalAmount-l" text="Total Amount" />
+                <Text id="totalAmount" text=""/>
+                <Label id="taxAmount-l" text="Tax Amount" />
+                <Text id="taxAmount" text=""/>
+                <Label id="grandtotal2" text="Grand Total" />
+                 <Text id="grandtotal1" text=""/>            
+                 </layout:content>
+        </layout:SimpleForm>
+    </VBox>
+</core:FragmentDefinition>

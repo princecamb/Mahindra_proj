@@ -1,0 +1,9 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:macros="sap.fe.macros">
+	<VBox id="_IDGenVBox6" core:require="{ handler: 'sales/ext/fragment/PaymentDetails'}" justifyContent="Center" alignItems="Center" width="90vw" height="100vh">
+		<!-- <Button id="_IDGenButton4" text="PaymentDetails" press="handler.onPress" /> -->
+		<PDFViewer id="pdfViewer1" source="{path: 'paymentBill'}" 
+                   showDownloadButton="true" isTrustedSource="true" 
+                   height="90vh" width="70vw" 
+                   class="sapUiLargeMargin" />
+	</VBox>
+</core:FragmentDefinition>

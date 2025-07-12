@@ -1,0 +1,90 @@
+{
+  "name": "Mahindra_sales",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap-cloud-sdk/connectivity": "^3.24.0",
+    "@sap-cloud-sdk/http-client": "^2.15.0",
+    "@sap-cloud-sdk/resilience": "^3.17.0",
+    "@sap/cds": "^7.9.5",
+    "@sap/cds-hana": "^2",
+    "@sap/xsenv": "^5.3.0",
+    "@sap/xssec": "^4",
+    "axios": "^1.7.8",
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "fs": "^0.0.1-security",
+    "jspdf": "^2.5.2",
+    "passport": "^0.7.0",
+    "path": "^0.12.7",
+    "pdfkit": "^0.15.0",
+    "razorpay": "^2.9.5"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^1",
+    "@sap/cds-dk": "^7",
+    "@sap/eslint-plugin-cds": "^3",
+    "@sap/ux-specification": "UI5-1.120",
+    "eslint": "^9",
+    "rimraf": "^5.0.5"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch-sales": "cds watch --open sales/webapp/index.html?sap-ui-xx-viewCache=false",
+    "undeploy": "cf undeploy Mahindra_sales --delete-services --delete-service-keys --delete-service-brokers",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
+  },
+  "cds": {
+    "requires": {
+      "db": "hana",
+      "fiori": {
+        "bypass_draft": true
+      },
+      "destinations": true,
+      "ABAP_Destinations": {
+        "kind": "odata-v2",
+        "credentials": {
+          "destination": "ABAP_Destinations"
+        },
+        "destinationOptions": {
+          "selectionStrategy": "alwaysProvider",
+          "jwt": null
+        }
+      },
+      "BPA_Trigger": {
+        "kind": "odata-v2",
+        "credentials": {
+          "destination": "BPA_Trigger"
+        },
+        "destinationOptions": {
+          "selectionStrategy": "alwaysProvider",
+          "jwt": null
+        }
+      },
+      "TEST_DEST1": {
+        "kind": "odata-v2",
+        "credentials": {
+          "destination": "TEST_DEST"
+        },
+        "destinationOptions": {
+          "selectionStrategy": "alwaysProvider",
+          "jwt": null
+        }
+      },
+      "auth": {
+        "development": "dummy",
+        "production": "xsuaa"
+      }
+    },
+    "sql": {
+      "native_hana_associations": false
+    }
+  },
+  "sapux": [
+    "app/sales"
+  ]
+}

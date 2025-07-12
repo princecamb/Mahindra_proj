@@ -1,0 +1,13 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<!-- <Text text="{discount}" /> -->
+	<VBox id = "discount-vbox" core:require="{ handler: 'sales/ext/fragment/Discount'}" >
+		<Text id="_IDGenText6"  text="{path : 'mDiscount'}" visible="{= ${IsActiveEntity} }"></Text>
+		<Input
+            id="discount"
+            value="{path : 'mDiscount', formatter: 'handler.formatter.formatText'}"
+            visible="{= !${IsActiveEntity} }" 
+			change="handler.onPress"
+			liveChange="handler.validateDiscount"
+			/>
+	</VBox>
+</core:FragmentDefinition>

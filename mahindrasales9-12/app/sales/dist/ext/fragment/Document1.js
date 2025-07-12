@@ -1,0 +1,2 @@
+sap.ui.define(["sap/m/MessageToast","jquery.sap.global"],function(e){"use strict";return{onOpenPressed:function(e){debugger;var r=e.oSource.getModel().getServiceUrl();var o=e.oSource.mProperties.url;if(!o.startsWith(r)){o=r+o;e.oSource.mProperties.url=o}}}});
+//# sourceMappingURL=Document1.js.map

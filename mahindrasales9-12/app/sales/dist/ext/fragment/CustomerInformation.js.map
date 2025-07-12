@@ -1,0 +1,1 @@
+{"version":3,"file":"CustomerInformation.js","names":["sap","ui","define","MessageToast","onPress","oEvent","show","formatter","formatText","sValue"],"sources":["CustomerInformation-dbg.js"],"mappings":"AAAAA,IAAIC,GAAGC,OAAO,CACV,sBACD,SAASC,GACR,aAEA,MAAO,CACHC,QAAS,SAASC,GACdF,EAAaG,KAAK,0BACtB,EACAC,UAAW,CACPC,WAAY,SAAUC,GAClB,OAAOA,GAAU,GACrB,GAGZ","ignoreList":[]}

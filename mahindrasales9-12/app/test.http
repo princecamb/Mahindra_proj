@@ -1,0 +1,24 @@
+POST   http://localhost:37623/odata/v4/my/PurchaseEnquiry(purchaseEnquiryUuid=ee2fb2ee-a492-4c02-8c14-ba57f84b19a3,IsActiveEntity=true)/enquiryToVehicle
+Content-Type: application/json
+
+{
+
+      "purchaseEnquiryUuid": "ee2fb2ee-a492-4c02-8c14-ba57f84b19a3",
+      "materialCode": "ME5",
+       "quantity": 2,
+      "band": "None(0%)",
+      "pricePerUnit": "1000.53424",
+      "taxPercentage": "2",
+      "actualPrice": "2001.07",
+      "totalPrice": "NaN",
+      "discount": "0",
+      "discountedPrice": "2001.07",
+      "partnerRole": "AG",
+      "partnerNumber": "0000301733",
+      "delId": null,
+      "preferredDelDate": null,
+      "preferredDelLocation": null,
+      "IsActiveEntity": true
+     
+    }
+  

@@ -1,0 +1,2 @@
+sap.ui.define(["sap/m/MessageToast"],function(e){"use strict";return{onPress:function(t){e.show("Custom handler invoked.")},formatter:{formatText:function(e){console.log(e);if(e==="SP")return`${e} (Sold-to-party)`;else if(e==="SH")return`${e} (Ship-to-party)`;else if(e==="PY")return`${e} (Payer)`;else if(e==="BP")return`${e} (Bill-to-party)`;else return e}}}});
+//# sourceMappingURL=PartnerRole.js.map

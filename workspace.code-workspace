@@ -1,0 +1,12 @@
+{
+    "folders": [
+        {
+            "path": "mahindrasales9-12"
+        }
+    ],
+    "settings": {
+        "SAP HANA Database Explorer.ShowXsAdvancedConnections": true,
+        "SAP HANA Project Explorer.bind.confirm existing service": false,
+        "SAP HANA Project Explorer.bind.confirm automatic undeployment": false
+    }
+}

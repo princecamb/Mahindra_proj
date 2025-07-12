@@ -1,0 +1,79 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:macros="sap.fe.macros" xmlns:layout="sap.ui.layout.form">
+	<!-- <VBox core:require="{ handler: 'sales/ext/fragment/EnquiryDetails'}">
+		<Button text="EnquiryDetails1" press="handler.onPress" />
+	</VBox> -->
+	<layout:SimpleForm
+        core:require="{ handler: 'sales/ext/fragment/EnquiryDetails'}"
+        id="enquiryDetails"
+        editable="false"
+        layout="ColumnLayout"
+        class="simpleForm"
+        columnsM="2"
+        columnsL="3"
+        columnsXL="4"
+        >
+        <!-- <layout:title>
+            <core:Title text="Price Details" />
+        </layout:title> -->
+
+        <layout:content>
+
+            <Label id="_IDGenLabel19"  text="Purchase Inquiry ID" labelFor="purchaseEnquiryId"/>
+            <Text id="purchaseEnquiryId" text="{path : 'purchaseEnquiryId', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="_IDGenLabel20"  text="Contact Person" labelFor="contactPerson" />
+            <Text id="contactPerson" text="{path : 'contactPerson', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="_IDGenLabel21"  text="Sales Organization" labelFor="salesOrg" />
+            <Text id="salesOrg" text="{path : 'salesOrg', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="_IDGenLabel22"  text="Distribution Channel" labelFor="distributionChannels" />
+            <Text id="distributionChannels" text="{path : 'distributionChannels', formatter: 'handler.formatter.formatText'}" />
+            
+            <Label id="_IDGenLabel23"  text="Division" labelFor="division" />
+            <Text id="division" text="{path : 'division', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="_IDGenLabel24"  text="Document Type" labelFor="docType" />
+            <Text id="docType" text="{path : 'docType', formatter: 'handler.formatter.formatText'}" />
+
+            <Label id="_IDGenLabel223"  text="Vendor Code" labelFor="vendorCode" />
+            <Text id="vendorCode" visible="{ui>/text}" text="{path : 'vendorCode', formatter: 'handler.formatter.formatText'}" />
+            <Label id="vendorCode-il"  text="Vendor Code" labelFor="vendorCode-input"/>
+            <ComboBox id="vendorCode-input" selectedKey="{path: 'vendorCode'}" visible="{ui>/comboBox}" loadItems="handler.onLoadVendor" > </ComboBox>
+
+            <Label id="_IDGenLabel133"  text="Company Code" labelFor="companyCode"/>
+            <Text id="companyCode" visible="{ui>/text}" text="{path : 'companyCode', formatter: 'handler.formatter.formatText'}" />
+            <Label id="_IDGenLabel1337"  text="Company Code" labelFor="myComboBox12"/>
+            <ComboBox 
+    id="myComboBox12" 
+    selectedKey="{path: 'companyCode'}"
+    visible="{ui>/comboBox}"
+    loadItems="handler.oncompanyCodeChange"
+    change="handler.onSetProperty"
+	>
+    </ComboBox>
+
+    <Label id="_IDGenLabel26"  text="Purchase Org" labelFor="purchOrg" />
+    <Text id="purchOrg" text="{path : 'purchOrg', formatter: 'handler.formatter.formatText'}" />
+
+
+            <Label id="_IDGenLabel25"  text="Purchase Group" labelFor="purchGroup" />
+            <Text id="purchGroup" visible="{ui>/text}" text="{path : 'purchGroup', formatter: 'handler.formatter.formatText'}" />
+            <Label id="_IDGenLabel256"  text="Purchase Group" labelFor="myComboBox123" />
+            <ComboBox 
+    id="myComboBox123" 
+    selectedKey="{path: 'purchGroup'}"
+    visible="{ui>/comboBox}"
+    loadItems="handler.onpurchOrgChange"
+	>
+    </ComboBox>
+
+    <Label id="_IDGenLabel191"  text="Quotation ID" labelFor="quotationId"/>
+    <Text id="quotationId" text="{path : 'quotationId', formatter: 'handler.formatter.formatText'}" />
+    
+    <!-- <Label id="_IDGenLabelStatus" text="Status" labelFor="statusInput"/>
+    <Input id="statusInput" value="{path : 'status'}" placeholder="Enter Status" /> -->
+        
+        </layout:content>
+    </layout:SimpleForm>
+</core:FragmentDefinition>
